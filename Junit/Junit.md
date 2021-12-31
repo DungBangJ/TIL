@@ -56,3 +56,8 @@ assertArrayEquals
 @test 자리에 @ParameterizedTest를 적는다.
 메서드 안에 value를 적지 않고 어노테이션에 적어서 여러 경우들을 고려해보는 것이다.(@ValueSource(types = {~}): value를 입력하는 어노테이션)
 - 어노테이션으로 value를 생성했으므로 메서드의 파라미터에 이를 의미하는 type과 변수 이름을 작성한다. 그럼 이 파라미터로 초기화되는 것이므로, 숫자로 초기화 되어있던 자리에 파라미터 변수 이름을 기입한다.
+- 두개의 파라미터를 동시에 parameterized test를 진행하려면 @ValueSource가 아닌 @CsvSource를 써야한다.(Comma Seperated Value Source)
+- @CsvSource 형식
+  - @CsvSource(value = {"77.0, 99.0"}) 이런식으로 두 value를 ""로 묶어준다.
+  - 물론 메소트의 파라미터에도 임의의 변수를 선언해줘야 한다.
+- @ParameterizedTest옆에 (name = ",")을 추가해주면, 결과창에서 각 CsvSource에 이름이 붙어 가독성을 높여준다.
