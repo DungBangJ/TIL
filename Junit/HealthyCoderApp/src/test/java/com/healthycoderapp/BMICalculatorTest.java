@@ -96,8 +96,9 @@ class BMICalculatorTest {
 		//when
 		double[] bmiScores = BMICalculator.getBMIScores(coders);
 		//then
-//		assertEquals(expected, bmiScores);
-		assertArrayEquals(expected, bmiScores);
+		//assertEquals(expected, bmiScores); // expected와 real의 element가 같지만, object가 다르다. ([D@~~]이런거)
+		//assertEquals는 object까지 같아야 오류가 나지 않는다.
+		assertArrayEquals(expected, bmiScores); // element를 나눠서 확인할 수 있는 assertion을 사용하면 문제가 해결된다.
 	}
 
 }
