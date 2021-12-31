@@ -51,3 +51,8 @@ assertArrayEquals
 @AfterEach
 @BeforeAll
 @AfterAll
+
+## parameterized test
+@test 자리에 @ParameterizedTest를 적는다.
+메서드 안에 value를 적지 않고 어노테이션에 적어서 여러 경우들을 고려해보는 것이다.(@ValueSource(types = {~}): value를 입력하는 어노테이션)
+- 어노테이션으로 value를 생성했으므로 메서드의 파라미터에 이를 의미하는 type과 변수 이름을 작성한다. 그럼 이 파라미터로 초기화되는 것이므로, 숫자로 초기화 되어있던 자리에 파라미터 변수 이름을 기입한다.

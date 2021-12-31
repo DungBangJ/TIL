@@ -15,6 +15,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class BMICalculatorTest {
 	
@@ -28,11 +30,12 @@ class BMICalculatorTest {
 		System.out.println("After all unit tests!");
 	}
 
-	@Test
-	void should_ReturnTrue_When_DietRecommended() {//test 메소드를 가독성을 높이기 위해 문장으로 메소드 이름을 표현하자.
+	@ParameterizedTest
+	@ValueSource(doubles = {89.0, 95.0, 110.0})//여기에 70키로가 있으면 그는 다이어트가 필요없으므로 오류가 난다.
+	void should_ReturnTrue_When_DietRecommended(Double coderWeight) {//test 메소드를 가독성을 높이기 위해 문장으로 메소드 이름을 표현하자.
 		
 		//given: input value
-		double weight = 89.0;
+		double weight = coderWeight;
 		double height = 1.72;
 		
 		//when: 메서드의 결과를 대입하는 구문
