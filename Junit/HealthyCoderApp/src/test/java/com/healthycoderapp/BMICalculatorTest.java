@@ -11,10 +11,22 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 class BMICalculatorTest {
+	
+	@BeforeAll //해당 테스트 클래스를 초기화할 때 딱 한번 수행되는 메서드
+	static void beforeAll() { //무조건 static
+		System.out.println("Before all unit tests!");
+	}
+	
+	@AfterAll //해당 테스트 클래스가 끝날 때 딱 한번 수행되는 메서드
+	static void AfterAll() {
+		System.out.println("After all unit tests!");
+	}
 
 	@Test
 	void should_ReturnTrue_When_DietRecommended() {//test 메소드를 가독성을 높이기 위해 문장으로 메소드 이름을 표현하자.
