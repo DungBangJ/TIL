@@ -44,3 +44,6 @@ assertFalse
 assertThrows
 assertEquals
 assertAll
+assertNull
+assertEquals
+assertArrayEquals
