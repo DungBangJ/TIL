@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
 
 class DietPlannerTest {
 	
@@ -22,7 +22,7 @@ class DietPlannerTest {
 	}
 	
 
-	@Test
+	@RepeatedTest(value = 10, name = RepeatedTest.LONG_DISPLAY_NAME) //test를 10번 반복한다는 의미의 어노테이션, value = 반복횟수 name = 반복할때마다 앞에 붙을 이름
 	void test() {
 		//given
 		Coder coder = new Coder(1.82, 75.0, 26, Gender.MALE);

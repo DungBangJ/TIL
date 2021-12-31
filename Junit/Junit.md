@@ -38,21 +38,28 @@ main 폴더에 가면 exception을 던지는 것을 알 수 있다. 이를 위�
 
 @Test
 - 이 어노테이션을 쓰지 않는다면, test는 실행되지 않는다.
+***
 
-assertTrue
-assertFalse
-assertThrows
-assertEquals
-assertAll
-assertNull
-assertEquals
-assertArrayEquals
-@BeforeEach
-@AfterEach
-@BeforeAll
-@AfterAll
-
-## parameterized test
+>ssertTrue  
+assertFalse  
+assertThrows  
+assertEquals  
+assertAll  
+assertNull  
+assertEquals  
+assertArrayEquals  
+@BeforeEach  
+@AfterEach  
+@BeforeAll  
+@AfterAll  
+assertTimeout  
+assumeTrue  
+@Nested  
+@DisplayName  
+@Disabled  
+@DisabledOnOs  
+***
+## Parameterized test
 @test 자리에 @ParameterizedTest를 적는다.
 메서드 안에 value를 적지 않고 어노테이션에 적어서 여러 경우들을 고려해보는 것이다.(@ValueSource(types = {~}): value를 입력하는 어노테이션)
 - 어노테이션으로 value를 생성했으므로 메서드의 파라미터에 이를 의미하는 type과 변수 이름을 작성한다. 그럼 이 파라미터로 초기화되는 것이므로, 숫자로 초기화 되어있던 자리에 파라미터 변수 이름을 기입한다.
@@ -61,3 +68,79 @@ assertArrayEquals
   - @CsvSource(value = {"77.0, 99.0"}) 이런식으로 두 value를 ""로 묶어준다.
   - 물론 메소트의 파라미터에도 임의의 변수를 선언해줘야 한다.
 - @ParameterizedTest옆에 (name = ",")을 추가해주면, 결과창에서 각 CsvSource에 이름이 붙어 가독성을 높여준다.
+- @CsvFileSource: csv파일을 그대로 가져와 value로 쓴다.
+  - 파일의 위치를 적어준다. 파일을 보면 첫 줄이 column name인 것을 알 수 있는데 이것은 test 중에 읽으면 안되는 것이므로 numLinesToSkip을 써서 넘겨준다.
+***
+## Repeated test
+@test자리에 @RepeatedTest()를 적어준다. ()안에는 반복 횟수를 적어준다.
+- test를 몇번 반복할 것인지 정해주는 어노테이션
+- 여기서 또 알 수 있는 것은 AfterEach, BeforeEach는 반복 횟수마다 실행된다.
+- @RepeatedTest(value = 10, name = RepeatedTest.LONG_DISPLAY_NAME)을 사용하면, value만큼 반복을 하는데 반복할때마다 메소드의 이름을 붙여서 어떤 메소드를 반복했는지 결과창에서 볼 수 있게 해준다.
+***
+## Nested
+- 메소드 이름별로 코드를 정리해서 나중에 결과창의 가독성을 높여주는 역할을 한다
+- @Nested를 붙여서 새로운 class를 생성하는 것이다. 여기서 주의할 점은, 만약 class로 묶었는데 원래 코드에서 this로 가리켰던 outer class는 더이상 this로 참조할 수 없으므로, this 앞에 outer class의 이름을 추가해줘야 한다.
+```java
+  assumeTrue(BMICalculatorTest.this.environment.equals("prod"));
+```
+- 여기서 assumeTrue는 아무리 값이 false라도 true로 가정하고 코드를 실행하는 것이다.
+***
+## Junit 4 vs 5
+|   Junit 4    |   Junit 5   |
+| :----------: | :---------: |
+|   @Before    | @BeforeEach |
+|    @After    | @AfterEach  |
+| @BeforeClass | @BeforeAll  |
+| @AfterClass  |  @AfterAll  |
+|   @Ignore    |  @Disabled  |
+***
+## Public test methods
+***Junit 5***<br/>
+
+```java
+@Test
+void should_ThrowException() //no need for public
+``` 
+
+
+***Junit 4***<br/>
+```java
+@Test
+public void should_ThrowException() // must be public
+```
+***
+## Testing exceptions
+***Junit 5***<br/>
+```java
+@Test
+void should_ThrowException(){
+  assertThrow(Exception.class, () -> {});
+}
+```
+***Junit 4***
+```java
+@Test(expected = Exception.class)
+public void should_ThrowException(){
+  ...
+}
+```
+***
+## Testing performances(timeout)
+***Junit 5***
+```java
+@Test
+void should_Timeout(){
+  assertTimeout(Duration.ofMillis(1), () -> {...});
+}
+```
+***Junit 4***
+```java
+@Test(timeout = 1)
+public void should_Timeout(){
+  ...
+}
+```
+***
+## New in Junit 5 
+- @Nested
+- @RepeatedTest
