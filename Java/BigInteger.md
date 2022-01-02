@@ -8,16 +8,16 @@
 ##  BigInteger 사용법
 
 우선 다음과 같이 import를 해준다.
-```
+```java
 import java.math.BigInteger;
 ```
-```
+```java
 BigInteger bigNumber = new BigInteger("10000");
 ```
 BigInteger은 java.math안에 있으며 위와 같이 선언한다. 특이한 점은 BigInteger를 초기화하기 위해서는 **문자열을 인자 값으로 넘겨주어야 한다**는 점입니다. **BigInteger가 문자열**로 되어 있기 때문입니다.
 
-### BigInteger 계산
-```
+## BigInteger 계산
+```java
 BigInteger bigNumber1 = new BigInteger("100000");
 BigInteger bigNumber2 = new BigInteger("10000");
 		
@@ -30,8 +30,8 @@ System.out.println("나머지(%) :" +bigNumber1.remainder(bigNumber2));
 **BigInteger은 문자열이기에 사칙연산이 안된다.** 그렇기에 BigIntger 내부의 숫자를 계산하기 위해서는 BigIntger 클래스 내부에 있는 메서드를 사용해야 한다.
 
 
-### BigInteger 형변환
-```
+## BigInteger 형변환
+```java
 BigInteger bigNumber = BigInteger.valueOf(100000); //int -> BigIntger
 
 int int_bigNum = bigNumber.intValue(); //BigIntger -> int
@@ -41,8 +41,8 @@ double double_bigNum = bigNumber.doubleValue(); //BigIntger -> double
 String String_bigNum = bigNumber.toString(); //BigIntger -> String
 ```
 
-### BigInteger 대소 비교
-```
+## BigInteger 대소 비교
+```java
 BigInteger bigNumber1 = new BigInteger("100000");
 BigInteger bigNumber2 = new BigInteger("1000000");
 		
@@ -53,9 +53,9 @@ System.out.println(compare);
 BigInteger의 값을 비교할 때는 **compareTo**라는 메서드를 사용한다.
 **두 수 비교 compareTo 동일하면 0, bigNumber1가 크면 1, bigNumber1가 작으면 -1**
 
-### BigInteger와 Scanner 같이 쓰기
+## BigInteger와 Scanner 같이 쓰기
 Scanner는 nextBigInteger를 지원하기 때문에, Scanner를 이용하면 두 수를 입력받아 합을 계산하는 프로그램을 작성할 수 있습니다.
-```
+```java
 import java.util.*;
 import java.math.*;
 
@@ -70,8 +70,8 @@ public class Main {
 }
 ```
 
-### BigInteger 배열
-```
+## BigInteger 배열
+```java
 import java.util.*;
 import java.math.*;
 
