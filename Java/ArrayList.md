@@ -1,6 +1,22 @@
-ArrayList는 자바의 List 인터페이스를 상속받은 여러 클래스 중 하나이다. 일반 배열과 동일하게 연속된 메모리 공간을 사용하며 인덱스는 0부터 시작한다.![](https://images.velog.io/images/disambur23/post/6ff8624d-aee0-42a8-b80c-b271044584d6/image.png)
+- [ArrayList](#arraylist)
+  - [배열과의 차이점](#배열과의-차이점)
+  - [ArrayList 생성](#arraylist-생성)
+  - [ArrayList 값 추가](#arraylist-값-추가)
+  - [ArrayList 값 삭제](#arraylist-값-삭제)
+  - [ArrayList 크기 구하기](#arraylist-크기-구하기)
+  - [ArrayList 값 출력](#arraylist-값-출력)
+  - [ArrayList 값 검색](#arraylist-값-검색)
 
-배열과의 차이점은 배열은 크기가 고정인 반면, ArrayList는 크기가 가변적으로 변한다. 내부적으로 저장이 가능한 메모리 용량이 있으며, 현재 사용 중인 공간의 크기가 있다. 만약 현재 가용량(Capacity) 이상을 저장하려고 할 때 더 큰 공간의 메모리를 새롭게 할당한다.
+# ArrayList
+- ArrayList는 자바의 List 인터페이스를 상속받은 여러 클래스 중 하나이다. 
+- 일반 배열과 동일하게 연속된 메모리 공간을 사용하며 인덱스는 0부터 시작한다.
+
+![](https://images.velog.io/images/disambur23/post/6ff8624d-aee0-42a8-b80c-b271044584d6/image.png)
+
+## 배열과의 차이점
+- 배열은 크기가 고정인 반면, ArrayList는 크기가 가변적으로 변한다. 
+- 내부적으로 저장이 가능한 메모리 용량이 있으며, 현재 사용 중인 공간의 크기가 있다. 
+- 만약 현재 가용량(Capacity) 이상을 저장하려고 할 때 더 큰 공간의 메모리를 ***새롭게 할당한다.***
 
 ## ArrayList 생성
 일단 ArrayList를 사용하려면 import가 필요하다.
@@ -35,7 +51,9 @@ Student student = new Student(name,age);
 members.add(student);
 members.add(new Member("홍길동",15));
 ```
-ArrayList에 값을 추가하려면 ArrayList의 add(index, value) 메소드를 사용하면 된다. index를 생략하면 ArrayList 맨 뒤에 데이터가 추가되며 index중간에 값을 추가하면 해당 인덱스부터 마지막 인덱스까지 모두 1씩 뒤로 밀려난다.![](https://images.velog.io/images/disambur23/post/a7934711-c815-4bf5-89e3-ea37242db954/image.png)
+ArrayList에 값을 추가하려면 ArrayList의 add(index, value) 메소드를 사용하면 된다. index를 생략하면 ArrayList 맨 뒤에 데이터가 추가되며 index중간에 값을 추가하면 해당 인덱스부터 마지막 인덱스까지 모두 1씩 뒤로 밀려난다.
+
+![](https://images.velog.io/images/disambur23/post/a7934711-c815-4bf5-89e3-ea37242db954/image.png)
 
 이 경우 데이터가 늘어나면 늘어날 수록 성능에 악영향이 미치기에 중간에 데이터를 insert를 해야할 경우가 많다면 ArrayList보다는 LinkedList를 활용하시는 것도 좋은 방법이다. 
 
@@ -72,7 +90,7 @@ while(iter.hasNext()){//다음값이 있는지 체크
     System.out.println(iter.next()); //값 출력
 }
 ```
-ArrayList의 get(index) 메소드를 사용하면 ArrayList의 원하는 index의 값이 리턴된다. 전체출력은 대부분 for문을 통해서 출력을하고 Iterator를 사용해서 출력을 할수도 있다. 
+ArrayList의 get(index) 메소드를 사용하면 ArrayList의 원하는 index의 값이 리턴된다. <br/>전체출력은 대부분 for문을 통해서 출력을하고 Iterator를 사용해서 출력을 할수도 있다. 
   
 ## ArrayList 값 검색
 ```java
