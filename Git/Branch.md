@@ -5,17 +5,19 @@ commit들을 순서대로만 이어나가면 문제가 생긴다. 그래서 bran
 
 ## master brach
 
-- master branch is just the default branch.    
-- master branch라고 특별한건 없다. 
+- master branch is just the default branch.
+- master branch라고 특별한건 없다.
 - 사람들은 master branch를 업무의 중심 branch라고 생각한다.
 - github에서는 master에서 main으로 변경
 - 여러 branch를 만들고, 나중에 master branch와 merge할 수 있다.
 
 ## HEAD
+
 - our current location
 - branch pointer
 
 ## branch
+
 - ```git branch``` 모든 branch를 확인할 수 있다. 현재 위치는 다른 색으로 표현된다.
 - ```git branch```에서 나오려면 q를 누르자
 - ```git branch branch-name```는 branch를 생성한다.
