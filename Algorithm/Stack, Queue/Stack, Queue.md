@@ -7,17 +7,17 @@
 
 ```java
 void x(){}
+        
+void y(){}
 
-        void y(){}
+void z(){
+    x();
+    y();
+}
 
-        void z(){
-        x();
-        y();
-        }
-
-        int main(){
-        z();
-        }
+int main(){
+    z();
+}
 ```
 
 |      |      |      | pop(x) |      | pop(y) |      |

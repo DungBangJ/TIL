@@ -10,15 +10,13 @@ class OverflowGStackException extends RuntimeException {
     }
 }
 
-
 public class GStack<E> {
     private int max; //스택 용량
     private int ptr; //스택 포인터
     private E[] stk; //스택 본체
 
-
-
     //생성자
+    @SuppressWarnings("unchecked")
     public GStack(int capacity) {
         ptr = 0;
         max = capacity;

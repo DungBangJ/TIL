@@ -18,6 +18,7 @@ public class GQueue<E> {
     //구분을 하기 위해 max와 num이 필요하다.
 
     //생성자
+    @SuppressWarnings("unchecked")
     public GQueue(int capacity) {
         num = front = rear = 0;
         max = capacity;
