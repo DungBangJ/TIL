@@ -13,7 +13,7 @@
 ### 예시
 노드 1을 시작 노드로 하여 DFS를 이용해 탐색한다.
 
-(스택에서 꺼낸 노드는 없는 노드로 생각하고 보자.)
+(검정색으로 칠한 노드는 방문처리가 된 노드이고, 파란 노드는 현재 위치한 노드이다.)
 
 1. 시작 노드(1)를 스택에 넣는다.
    - 인접한 노드 중(2, 3, 4)에서 스택에 없는 가장 작은 숫자의 노드(2)로 이동하고 스택에 넣는다.
@@ -25,7 +25,8 @@
 2. 인접한 노드(2)로 이동했으면, 그 노드(2)를 스택에 넣는다.
    - 인접한 노드 중(1, 5, 6)에서 스택에 없는 가장 작은 숫자의 노드(5)로 이동한다.
 
-![3](./assets/DFSBFS-1644128921252.png)
+![3](./assets/DFS-1644134361815.png)
+
 
 ---
 
@@ -34,13 +35,15 @@
    - 인접한 모든 노드(2)가 이미 스택에 들어가 있으면 최상단 노드(5)를 꺼낸다.
    - 최상단 노드(5)를 꺼낸 후에 스택에 남아있는 최상단 노드(2)로 이동한다.
 
-![4](./assets/DFSBFS-1644128963927.png)
+![4](./assets/DFS-1644134396581.png)
+
 
 ---
 
 4. 인접한 노드 중(1, 6)에서 스택에 없는 가장 작은 숫자의 노드(6)로 이동하고 스택에 넣는다.
 
-![5](./assets/DFSBFS-1644129007413.png)
+![5](./assets/DFS-1644134426286.png)
+
 
 ---
 
@@ -55,7 +58,9 @@
    - 인접한 모든 노드(1)가 이미 스택에 들어가 있으면 최상단 노드(2)를 꺼낸다.
    - 최상단 노드(2)를 꺼낸 후에 스택에 남아있는 최상단 노드(1)로 이동한다.
 
-![6](./assets/DFSBFS-1644129060218.png)
+![6](./assets/DFS-1644134706376.png)
+
+
 
 ---
 
@@ -64,7 +69,9 @@
    - 인접한 모든 노드(1)가 이미 스택에 들어가 있으면 최상단 노드(3)를 꺼낸다.
    - 최상단 노드(3)를 꺼낸 후에 스택에 남아있는 최상단 노드(1)로 이동한다.
 
-![7](./assets/DFSBFS-1644129104277.png)
+![7](./assets/DFS-1644134656380.png)
+
+
 
 ---
 
@@ -73,13 +80,15 @@
   - 인접한 모든 노드(1)가 이미 스택에 들어가 있으면 최상단 노드(4)를 꺼낸다.
   - 최상단 노드(4)를 꺼낸 후에 스택에 남아있는 최상단 노드(1)로 이동한다. 
 
-![8](./assets/DFSBFS-1644129129533.png)
+![8](./assets/DFS-1644134591598.png)
+
 
 ---
 
 8. 더 이상 이동할 노드가 없으면 스택을 비운다.
 
-![9](./assets/DFSBFS-1644129170167.png)
+![9](./assets/DFS-1644134620692.png)
+
 
 ---
 
@@ -134,4 +143,59 @@ public class DFSRecur {
 
 
 ## DFS 구현 (Stack클래스)
+
+```java
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class DFSStack {
+    static void dfs(int[][] graph, int start, boolean[] visited) {
+        visited[start] = true; //시작 노드의 방문 상태 true
+        System.out.print(start + "  ");
+
+        Deque<Integer> stack = new LinkedList<>(); //스택 생성
+        stack.push(start); //시작 노드를 스택의 첫번째로 집어 넣음
+
+        while (!stack.isEmpty()) { //스택이 비어있지 않다면 while문 수행
+            int now = stack.peek(); //현재 스택 최상단에 있는 노드를 now
+
+            boolean hasNearNode = false; //인접 노드가 없다고 초기화
+            for (int i : graph[now]) {
+                //인접한 노드를 방문하지 않았다면 스택에 넣고 방문처리
+                if (!visited[i]) {
+                    hasNearNode = true;
+                    stack.push(i); //스택에 넣는다.
+                    visited[i] = true; //방문 처리
+                    System.out.print(i + "  ");
+                    break;
+                }//if
+            }//for
+
+            //인접한 노드를 모두 방문했다면 스택에서 해당 노드를 꺼낸다.
+            if (hasNearNode == false) {
+                stack.pop();
+            }
+        }//while
+    }
+
+    public static void main(String[] args) {
+         int[][] graph = {
+                {}, //0번 노드와 연결된 노드
+                {2, 3, 4}, //1번 노드와 연결된 노드
+                {1, 5, 6}, //2번 노드와 연결된 노드
+                {1}, //3번 노드와 연결된 노드
+                {1}, //4번 노드와 연결된 노드
+                {2}, //5번 노드와 연결된 노드
+                {2, 7}, //6번 노드와 연결된 노드
+                {6} //7번 노드와 연결된 노드
+        };
+        boolean [] visited = {false, false, false, false, false, false, false, false};
+
+        dfs(graph, 1, visited);
+    }
+}
+```
+
+![dfsstack](./assets/DFS-1644132930438.png)
+
 
