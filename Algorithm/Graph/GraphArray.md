@@ -25,12 +25,13 @@ public class GraphArray {
     private int[][] array; //인접 행렬 선언
 
     public GraphArray(int size) {
-        array = new int[size][size]; //인접 행렬의 크기
+        array = new int[size + 1][size + 1]; //인접 행렬의 크기
     }
 }
 ```
 
 생성자로 정사각 행렬을 크기와 함께 초기화한다.
+- 행렬의 인덱스는 0부터 시작하므로 size에 1을 더해준다.
 
 ## 3. 필요한 메서드 구현
 
@@ -116,8 +117,8 @@ public void printArray(){
 public class GraphArray{
     private int[][] array;
 
-    public GraphArray(int size){ // 행렬 그래프 생성
-        array = new int[size][size];
+    public GraphArray(int size){
+        array = new int[size + 1][size + 1];
     }
 
     public int[][] getArray(){

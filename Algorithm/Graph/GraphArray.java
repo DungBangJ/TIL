@@ -1,8 +1,8 @@
 public class GraphArray{
     private int[][] array;
 
-    public GraphArray(int size){ // 행렬 그래프 생성
-        array = new int[size][size];
+    public GraphArray(int size){
+        array = new int[size + 1][size + 1];
     }
 
     public int[][] getArray(){
