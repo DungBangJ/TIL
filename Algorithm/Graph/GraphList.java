@@ -7,6 +7,10 @@ public class GraphList {
         listGraph = new ArrayList<ArrayList<Integer>>();
     }
 
+    public void addVertex(int x){
+        listGraph.add(new ArrayList<Integer>(x));
+    }
+
     public void addDirectedEdge(int x, int y){
         listGraph.get(x).add(y);
     }

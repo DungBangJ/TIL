@@ -15,7 +15,16 @@ ArrayList인 것이다.
 
 - 이렇게 만들어 주고 간단하게 ArrayList의 메서드를 사용해서 노드를 연결시켜주면 된다.
 
-## 2. 정점 x와 정점 y를 연결시켜주는 메서드
+## 2. 정점들을 생성
+
+```java
+public void addVertex(int x){
+    listGraph.add(new ArrayList<Integer>(x));
+}
+```
+- 리스트의 헤드가 될 정점들을 생성한다.
+
+## 3. 정점 x와 정점 y를 연결시켜주는 메서드
 
 단방향
 - 리스트 그래프는 각 정점을 헤드로 두는 리스트들로 배열된 형태이다. 
@@ -58,29 +67,34 @@ public void printGraph() {
 import java.util.ArrayList;
 
 public class GraphList {
-    private ArrayList<ArrayList<Integer>> listGraph;
+  private ArrayList<ArrayList<Integer>> listGraph;
 
-    public GraphList() {
-        listGraph = new ArrayList<ArrayList<Integer>>();
-    }
+  public GraphList() {
+    listGraph = new ArrayList<ArrayList<Integer>>();
+  }
 
-    public void addDirectedEdge(int x, int y) {
-        listGraph.get(x).add(y);
-    }
+  public void addVertex(int x){
+    listGraph.add(new ArrayList<Integer>(x));
+  }
 
-    public void addCompleteEdge(int x, int y) {
-        listGraph.get(x).add(y);
-        listGraph.get(y).add(x);
-    }
+  public void addDirectedEdge(int x, int y){
+    listGraph.get(x).add(y);
+  }
 
-    public void printGraph() {
-        for (int i = 1; i < listGraph.size(); i++) {
-            System.out.print("vertex " + i + " => ");
-            for (int j = 0; j < listGraph.get(i).size(); j++) {
-                System.out.print(" " + listGraph.get(i).get(j));
-            }
-            System.out.println();
-        }
+  public void addCompleteEdge(int x, int y){
+    listGraph.get(x).add(y);
+    listGraph.get(y).add(x);
+  }
+
+  public void printGraph() {
+    for(int i=1; i<listGraph.size(); i++) {
+      System.out.print("vertex " + i + " => ");
+      for(int j=0; j<listGraph.get(i).size(); j++) {
+        System.out.print(" "+listGraph.get(i).get(j));
+      }
+      System.out.println();
     }
+  }
 }
+
 ```
