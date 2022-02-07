@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+    font-weight: 1;
+    text-decoration: blue underline wavy;
+    letter-spacing: 15px;
+    font-size: 100px;
+    /*font 스타일을 결정하는 font-family, 여러개를 써서 처음 것이 안되면 차선책을 뒤에서 선택하는 것이다.*/
+    font-family: fantasy, monospace;
+}
+
+p{
+    text-align: center;
+    font-weight: bold;
+    line-height: 2;
+}
+
+a{
+    text-decoration: none;
+}

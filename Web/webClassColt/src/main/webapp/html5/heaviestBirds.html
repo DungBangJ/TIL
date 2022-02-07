@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Heaviest Birds</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Animal</th>
+        <th>Average mass[kg (lb)]</th>
+        <th>Maximum mass[kg (lb)]</th>
+        <th>Flighted</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Ostrich</td>
+        <td>104(230)</td>
+        <td>156.8</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>Somali Ostrich</td>
+        <td>90(200)</td>
+        <td>130(287)</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>Wild Turkey</td>
+        <td>13.5(29.8)</td>
+        <td>39(86)</td>
+        <td>Yes</td>
+    </tr>
+    </tbody>
+
+</table>
+
+<h2>V2</h2>
+    <table>
+        <thead>
+        <tr>
+<!--            Average Mass에 하위 항목 두개를 주고 싶다면-->
+<!--            rowspan="2"를 다른 열 항목에 주고, Average Mass에는 colspan="2"를 준다.-->
+            <th rowspan="2">Animal</th>
+            <th colspan="2">Average Mass</th>
+            <th rowspan="2">Flighted</th>
+        </tr>
+        <tr>
+            <th>[kg]</th>
+            <th>[lb]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Ostrich</td>
+            <td>104</td>
+            <td>230</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Somali Ostrich</td>
+            <td>90</td>
+            <td>9200</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Wild Turkey</td>
+            <td>13.5</td>
+            <td>29.8</td>
+            <td>Yes</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+
+</body>
+</html>
