@@ -1,0 +1,20 @@
+section {
+    width: 500px;
+    height: 500px;
+    background-color: magenta;
+}
+
+#rgba {
+    width: 50%;
+    height: 50%;
+    /*rgba에서 a는 투명도를 의미한다. 0은 투명, 1은 불투명*/
+    background-color: rgba(255,255,255,0.7)
+}
+
+#opacity {
+    width: 50%;
+    height: 50%;
+    background-color: yellow;
+    /*투명도를 의미하는 opacity. 0: 투명, 1:불투명*/
+    opacity: 0.3;
+}

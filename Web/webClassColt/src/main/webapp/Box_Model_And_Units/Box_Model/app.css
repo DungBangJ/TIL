@@ -1,0 +1,52 @@
+body {
+    /*body의 기본적인 margin을 0으로 만들기*/
+    margin: 0;
+}
+div {
+    width: 200px;
+    height: 200px;
+}
+span {
+    margin-left: 30px;
+    margin-top:30px;
+}
+
+h1 {
+    background-color: pink;
+    width: 200px;
+    padding-left: 100px;
+    padding-top: 50px;
+    margin: 0;
+}
+
+#one {
+    background-color: #e5989b;
+    border-width: 5px; /*테두리 굵기*/
+    border-color: black; 
+    border-style: solid;
+    /* box-sizing: border-box; boarder가 box-width를 깎아서 맞춘다. */
+    margin-left: 50px;
+    margin-bottom: 100px;
+}
+
+#two {
+    background-color: #b5838d;
+    border-color: #ffcdb2;
+    border-width: 3px;
+    border-style: dashed;
+    border-left-width: 8px;
+    padding-right: 50px;
+    margin: 200px;
+}
+
+#three {
+    background-color: #6d6875;
+    border: 4px solid black; /*굵기 스타일 색*/
+    border-left-style: dotted;
+    border-radius: 50%;
+}
+
+
+button {
+    padding: 10px 20px 30px 40px;
+}

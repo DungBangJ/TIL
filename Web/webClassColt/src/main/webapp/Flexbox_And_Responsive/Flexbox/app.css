@@ -1,0 +1,59 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+h1, h2{
+    text-align: center;
+}
+#container {
+    background-color: #003049;
+    width: 90%;
+    /* height: 500px; */
+    margin: 0 auto;
+    border: 5px solid #003049;
+    /*창의 크기에 따라 유연하게 변한다.(flex)*/
+    display: flex;
+    flex-direction: row; /*도형의 순서와 수직정렬, 수평정렬을 결정한다.*/
+    justify-content: center;
+    /*align-items: space-around; 도형의 절대적인 위치를 변경 한다.*/
+    /* flex-wrap: wrap; div의 크기를 맞추서 도형을 정렬한다. over가 생기면 옆으로 넘기는 식*/
+
+}
+
+#container div {
+    width: 200px;
+    height: 200px;
+    /* max-width: 300px; max나 min으로 창의 크기를 변경할 때 도형의 크기의 제한을 둘 수 있다.*/
+    text-align:center;
+    /*flex-basis는 width와 height를 무시하고 기초 크기를 부여한다. (flex-direction의 방향을 따른다.)*/
+    flex-basis: 600px;
+    /*flex-grow: 1;*/
+}
+
+div:nth-of-type(1) {
+    flex-grow: 1;
+    /*flex-shrink는 도형이 줄어드는 것에 가중치를 부여한다. 0이면 다른 도형들보다 훨씬 줄어들지 않는다.*/
+    flex-shrink:2;
+}
+div:nth-of-type(5) {
+    flex-grow: 2;
+}
+
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid black;
+    height: 500px;
+    display: flex;
+}
+main .sidebar {
+    background-color: #6930c3;
+    /*flex-grow | flex-shrink | flex-basis*/
+    flex:1 2 300px;
+}
+main .maincontent {
+    background-color: #80ffdb;
+    flex: 2 1 800px;
+}
+
+

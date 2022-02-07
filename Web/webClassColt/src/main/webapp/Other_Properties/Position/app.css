@@ -1,0 +1,47 @@
+div {
+    width: 100px;
+    height: 100px;
+    background-color: #3d405b;
+    border: 2px solid black;
+    margin: 10px;
+    display: inline-block;
+}
+
+
+#middle {
+    background-color: #81b29a;
+}
+
+#static #middle {
+    position: static;
+    top: 100px;
+}
+
+#relative #middle {
+    position: relative;
+    /*position이 static일 때의 기준에서 px만큼 이동*/
+    top: 50px;
+    left: 50px;
+}
+
+#absolute {
+    /*자손중에 position이 absolute인 것이 있으면 조상이 기준이 된다.*/
+    /*absolute의 position이 static이면 자손의 absolute 기준이 페이지가 기본이 된다.*/
+    position: relative; /*position이 relative면 자손이 이 조상을 기준으로 위치한다. */
+}
+
+#absolute #middle {
+    position: absolute;
+    /*absolute는 조상의 위치를 기준으로 이동을한다.*/
+    /*만약 absolute가 스타일 시트에 정해지지 않았다면 기본 페이지를 기준으로 움직인다.*/
+    top: 1px;
+    left: 1px;
+}
+
+#fixed #middle {
+    /*지금 보고 있는 페이지에 고정이 된다.*/
+    /*화면을 스크롤 해서 움직여도 따라온다.(fixed)*/
+    position: fixed;
+    top: 0;
+    left: 400px;
+}

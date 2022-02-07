@@ -1,0 +1,64 @@
+html {
+    /*html이 root element이다. 이 font-size를 기준으로 rem이 적용된다.*/
+    font-size: 30px;
+}
+#percentages {
+    background-color: #6d6875;
+    width: 800px;
+    height: 800px;
+}
+
+#percentages div {
+    background-color:#e5989b;
+    /*width와 height에 쓰이는 %는 부모의 크기의 %를 뜻한다. */
+    width: 70%;
+    height: 20%;
+}
+
+
+#ems h2 {
+    /*em은 부모의 배수를 뜻한다. 2em은 부모의 크기의 2배이다.*/
+    font-size: 2em;
+    /*font-size에 쓰이는 em이 부모의 배수를 뜻하고, 그 외는 모두 font-size의 em에 대한 배수를 뜻한다.*/
+    margin-left: 1em;
+}
+#ems h3 {
+    font-size: 1.5em;
+}
+#ems p {
+    font-size: 1em;
+}
+
+#ems {
+    font-size: 15px;
+}
+
+#ems ul {
+    font-size: 1.5em;
+}
+
+button {
+    font-size: 1em;
+    padding: 0 1em;
+    border-radius: 0.5em;
+    background-color: #2a9d8f;
+    color: white;
+}
+
+/*root element font-size를 기준으로 하고 부모를 기준으로 하지 않기 때문에*/
+/*상대적이지 않고 절대적인 비율을 적용할 수 있다.*/
+#rems h2{
+    font-size: 3rem;
+}
+#rems h3{
+    font-size: 2rem;
+}
+#rems ul{
+    font-size: 1.5rem;
+}
+
+#rems button{
+    font-size: 1.5rem;
+}
+
+

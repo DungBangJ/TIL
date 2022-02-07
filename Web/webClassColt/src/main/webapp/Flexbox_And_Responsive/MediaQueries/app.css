@@ -1,0 +1,100 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-size: 6em;
+    text-align: center;
+}
+nav {
+    font-size: 1.5em;
+    display: flex;
+    /*justify-content를 space-between으로 하면 그룹별로 동등하게 나눈다. 두개면 양쪽으로 세개면 왼 가운데 오 형식으로 나눈다. 깔끔하게*/
+    justify-content: space-between;
+}
+
+
+ul,li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+ul {
+    flex: 1; /*가운데 부분에만 flex를 적용했으므로 이 부분만 유연성을 가진다.*/
+    max-width: 50%; /*너무 유연하면 안되기에 제한을 둔다.*/
+    display: flex;
+    /*space-evenly로 같은 간격을 갖고 나눠지게 만든다.*/
+    justify-content: space-evenly;
+}
+
+
+/* @media (min-width: 600px) and (max-width: 800px){
+    h1 {
+        color: purple;
+    }
+} */
+
+/*max-width가 큰 것부터 작성해야 한다.
+나중에 작성되는 것이 위에 덮이기 때문에 큰 것을 나중에 작성한다면 그 전에 쓰인 작은 범위는 없어지는 것이나 다름없기 때문이다.*/
+/* @media (max-width: 1500px){
+    h1 {
+        color: yellow;
+    }
+}
+
+@media (max-width: 1000px){
+    h1 {
+        color: orange;
+    }
+}
+@media (max-width: 500px){
+    h1 {
+        color: red;
+    }
+} */
+/*다음과 같이 적는 것이 더 효율적이다.*/
+
+
+h1 {
+    color: red;
+}
+
+@media (min-width: 500px){
+    h1 {
+        color: orange;
+    }
+}
+@media (min-width: 1000px){
+    h1 {
+        color: yellow;
+    }
+}
+@media (min-width: 1500px){
+    h1 {
+        color: green;
+    }
+}
+
+/*landscape는 디바이스를 가로모드로 볼 경우를 의미한다.*/
+/* @media (orientation: landscape) {
+ body {
+     background-color: magenta;
+ }
+} */
+
+
+@media (max-width: 768px){
+    h1 {
+        font-size: 4em;
+    }
+    nav, nav ul {
+        flex-direction: column; /*768px가 되면 column으로 모이게 된다.*/
+        align-items: center; /*모인것을 가운데로 정렬한다.*/
+    }
+  
+}
+@media (max-width: 576px){
+    h1 {
+        font-size: 3em;
+    }
+}
