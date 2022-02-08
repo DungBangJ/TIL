@@ -1,0 +1,18 @@
+/*스타일 설정이 없다면 가장 가까운 부모의 설정을 상속 받는다.(부모에게 스타일 설정이 있을 경우에만)*/
+body {
+    color: purple;
+}
+
+section {
+    color: aqua;
+}
+
+form {
+    color: greenyellow;
+}
+/*특정한 요소를 지정해서 가장 가까운 부모에게서 상속받을 수 있게 inherit;을 쓰기도 한다.*/
+button, input {
+    color: inherit;
+}
+
+/*모든 설정이 상속되는 것은 아니다.*/
