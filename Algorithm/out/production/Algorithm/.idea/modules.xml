@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Stack, Queue.iml" filepath="$PROJECT_DIR$/.idea/Stack, Queue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DFSBFS.iml" filepath="$PROJECT_DIR$/DFSBFS.iml" />
     </modules>
   </component>
 </project>
