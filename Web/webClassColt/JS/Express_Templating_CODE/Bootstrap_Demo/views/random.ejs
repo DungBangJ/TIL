@@ -1,0 +1,16 @@
+<%- include('partials/head')%>
+
+<%- include('partials/navbar')%>
+
+<!--'%='은 output을 나타낸다.-->
+<h1>Your random number is: <%= num %></h1>
+<!--<% if(num % 2 === 0){ %> logig을 나타낼때는 '%'만 사용한다.-->
+<h2>That is an even number!</h2>
+<% } else { %>
+<h2>That is an odd number!</h2>
+<% } %>
+<p>Here's an alternate way of doing it:</p>
+<!--logic을 나타내는 것이지만, 그 logic에서 output이 발생하므로'%='을 사용했다.-->
+<h3>That number is: <%= num%2===0 ? 'EVEN' : 'ODD' %></h3>
+
+<%- include('partials/footer')%>
