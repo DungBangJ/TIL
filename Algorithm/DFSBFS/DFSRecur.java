@@ -1,3 +1,5 @@
+package DFSBFS;
+
 public class DFSRecur {
     //아직 방문하지 않은 노드들의 방문 상태를 false로 설정
     public static boolean [] visited = {false, false, false, false, false, false, false, false};
