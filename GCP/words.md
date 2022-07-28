@@ -70,3 +70,43 @@ Containerized Application
 - Applications that run in isolated runtime environments called containers.
 - makes an application portable by enabling it to behave consistently across different hosts
   - allowing developers to write once and run almost anywhere
+
+Analytic database
+
+- read-only system
+  - stores historical data on business metrics such as sales performance and inventory levels.
+
+Data ingestion
+
+- the process of obtaining and importing data for immediate use or storage in a database.
+- types of data ingestion
+  - Batch processing
+    - collects data from sources incrementally and sends batches to the application or system where the data is to be used or stored.
+    - less expensive
+  - Real-time processing
+    - also referred to as stream processing
+    - data is not grouped in any way in real-time processing.
+    - each piece of data is loaded as soon as it is recognized by the ingestion layer and processed as an individual object.
+  - Micro batching
+    - it divides data into groups, but ingests them in smaller increments that make it more suitable for applications that require streaming data.
+
+Relational databases(RDB)
+
+- a way of structuring information in tables, rows, and columns.
+- a collection of information that organizes data in predefined relationships
+  - the data is stored in one or more tables of columns and rows, making it easy to see and understand how different data structures relate to each other.
+
+Data Pipeline
+- a series of data processing steps.
+- data pipelines consist of three key elements
+  - a source
+  - a processing step(steps)
+  - a destination(in some data pipelines: a sink)
+- enable the flow of data
+  - from an application to a data warehouse
+  - from a data lake to an analytics database
+- any time data is processed between A and B, there is a data pipeline between those points.
+
+CSV(Comma-Seperated-values)
+- a text file in which information is seperated by commas.
+- most commonly encountered in spreadsheets and databases.
