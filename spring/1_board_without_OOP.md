@@ -187,6 +187,7 @@ public class MemberServieImpl implements MemberService{
      }
 }
 ```
+
 - MemberRepositoryImpl 구현체를 받아 함수를 사용한 것이다.
 
 ## 회원 도메인 실행과 테스트
@@ -213,6 +214,7 @@ public class MemberApp {
      }
 }
 ```
+
 - 이렇게 main에다가 직접 테스트를 하는 것은 좋은 방법이 아니다.
   - 테스트를 하다가 실수로 코드를 변경해버릴 수도 있고, 오류가 발생할 가능성이 올라가는 불상사가 일어난다.
   - **JUnit 테스터**를 사용한다.
@@ -242,6 +244,7 @@ public class MemberServiceTest {
      }
 }
 ```
+
 - JUnit 테스터로 테스트를 해본다.
 - given, when, then 구조를 활용한다.
   - given
@@ -261,6 +264,7 @@ ex) `private final MemberRepository memberRepository = new MemberRepositoryImpl(
 # 주문과 할인 도메인 설계
 
 주문과 할인 정책
+
 - 등급에 따른 할인 정책
 - 할인 정책
   - 고정 금액 할인
@@ -299,6 +303,7 @@ public interface DiscountPolicy {
      int discount(Member member, int price);
 }
 ```
+
 - 이렇게 인터페이스를 만들어줘야 나중에 정액 할인 정률 할인을 편하게 번갈아가며 사용할 수 있다.
 
 ### 정액 할인 정책 구현체
@@ -388,12 +393,12 @@ public class Order {
 }
 
 ```
+
 - 주문 정보
   - 회원 ID
   - 품목 이름
   - 가격
   - 할인액
-
 
 ### 주문 서비스 인터페이스
 
@@ -427,6 +432,7 @@ public class OrderServiceImpl implements OrderService{
      }
 }
 ```
+
 - 주문 생성이 요청되면 주문 객체를 생성해서 반환한다.(`new Order()`)
   - 이 주문 객체에는 다음의 정보들이 들어간다.
     - 회원 ID
