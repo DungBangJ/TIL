@@ -31,7 +31,7 @@ spring initializer에서 gradle project 생성 후 다운로드
 
 - 인텔리제이를 실행하면 빌드를 시작한다.
 
-![](img/2022-09-12-19-42-29.png)
+![](../img/2022-09-12-19-42-29.png)
 
 # 회원 도메인 설계
 
@@ -42,11 +42,11 @@ spring initializer에서 gradle project 생성 후 다운로드
 - DB
   - 자체 DB or 외부 DB
 
-![](img/2022-09-12-19-54-49.png)
+![](../img/2022-09-12-19-54-49.png)
 
 ## 회원 클래스 다이어그램
 
-![](img/2022-09-12-19-55-22.png)
+![](../img/2022-09-12-19-55-22.png)
 
 ## 회원 도메인 개발
 
@@ -273,7 +273,7 @@ ex) `private final MemberRepository memberRepository = new MemberRepositoryImpl(
 
 ## 다이어 그램
 
-![](img/2022-09-12-20-24-26.png)
+![](../img/2022-09-12-20-24-26.png)
 
 1. 주문 생성
     - 클라이언트가 주문 서비스에 주문 생성을 요청
@@ -286,9 +286,9 @@ ex) `private final MemberRepository memberRepository = new MemberRepositoryImpl(
 
 위의 과정을 모두 나타낸 다이어그램
 
-![](img/2022-09-12-20-27-14.png)
+![](../img/2022-09-12-20-27-14.png)
 
-![](img/2022-09-12-20-27-58.png)
+![](../img/2022-09-12-20-27-58.png)
 
 ## 주문과 할인 도메인 개발
 
