@@ -1,0 +1,91 @@
+# URI(Uniform Resource Identifier)
+
+![](img/2022-09-27-20-18-04.png)
+
+URL(Resource Locator)
+
+- 리소스의 위치
+
+URN(Resource Name)
+
+- 리소스의 이름
+
+![](img/2022-09-27-20-19-47.png)
+
+URI
+
+- Uniform
+  - 리소스 식별하는 통일된 방식
+- Resource
+  - 자원, URI로 식별할 수 있는 모든 것
+- Identifier
+  - 다른 항목과 구분하는데 필요한 정보
+
+URL
+
+- Locator
+  - 리소스 있는 위치 지정
+
+URN
+
+- Name
+  - 리소스에 이름 부여
+- URN 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되어있지 않다.
+  - URI를 URL과 같은 의미로 봐도 무관한 이유
+
+# URL 전체 문법
+
+![](img/2022-09-27-20-25-13.png)
+
+## URL - scheme
+
+![](img/2022-09-27-20-29-26.png)
+
+주로 프로토콜을 적는다.
+- 프로토콜
+  - 어떤 방식으로 자원에 접근할 것인가 하는 약속, 규칙
+  - 예)http, https, ftp 등
+    - http : 80 포트
+    - https : 443 포트
+    - 포트는 생략 가능하다.
+
+## URL - userinfo
+
+![](img/2022-09-27-20-29-36.png)
+
+URL에 사용자 정보를 포함해서 인증
+
+거의 사용하지 않는다.
+
+## URL - host
+
+![](img/2022-09-27-20-30-43.png)
+
+호스트명
+- 도메인 명이나 IP 주소
+
+## URL - PORT
+
+![](img/2022-09-27-20-31-26.png)
+
+접속 포트
+- 일반적으로 생략한다.
+- 생략할 때는 80 or 443
+
+## URL - path
+
+![](img/2022-09-27-20-32-57.png)
+
+리소스 경로(path)
+- 계층적 구조
+- 예) 
+  - /home/file1.jpa
+  - /members/100
+
+## URL - query
+
+![](img/2022-09-27-20-36-01.png)
+
+- `<key>=<value>` 형식으로 작성
+- `?`로 시작, `&`로 query 추가
+- query parameter, query string 등으로 불린다.
