@@ -18,7 +18,6 @@
   - [파일 관리 시스템 - PUT 기반 등록](#파일-관리-시스템---put-기반-등록)
   - [HTML Form 사용](#html-form-사용)
 
-
 # HTTP 메서드
 
 ## HTTP API 설계
