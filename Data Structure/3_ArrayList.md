@@ -1,3 +1,35 @@
+- [ArrayList](#arraylist)
+- [ArrayList 클래스 및 생성자 구성하기](#arraylist-클래스-및-생성자-구성하기)
+- [동적할당을 위한 resize 메소드 구현](#동적할당을-위한-resize-메소드-구현)
+  - [조건문 1: `if (Arrays.equals(array, EMPTY_ARRAY))`](#조건문-1-if-arraysequalsarray-empty_array)
+  - [조건문 2: `if (size == array_capacity)`](#조건문-2-if-size--array_capacity)
+  - [조건문 3: `if (size < (array_capacity >>> 1))`](#조건문-3-if-size--array_capacity--1)
+  - [hugeRangeCheck 메서드](#hugerangecheck-메서드)
+    - [조건문 1: `if (MAX_ARRAY_SIZE - size <= 0)`](#조건문-1-if-max_array_size---size--0)
+    - [조건문 2](#조건문-2)
+- [add 메소드 구현](#add-메소드-구현)
+  - [add(E value) & addLast(E value)](#adde-value--addlaste-value)
+  - [add(int index, E value)](#addint-index-e-value)
+  - [addFirst(E value)](#addfirste-value)
+- [get, set, indexOf, contains 메소드 구현](#get-set-indexof-contains-메소드-구현)
+  - [`get(int index)`](#getint-index)
+  - [`set(int index, E value)`](#setint-index-e-value)
+  - [indexOf(Object value)](#indexofobject-value)
+  - [`LastIndexOF(Object value)`](#lastindexofobject-value)
+  - [`contains(Object value)`](#containsobject-value)
+- [remove 메소드 구현](#remove-메소드-구현)
+  - [`remove(int index)`](#removeint-index)
+  - [`remove(Object value)`](#removeobject-value)
+- [size, isEmpty, clear 메소드 구현](#size-isempty-clear-메소드-구현)
+  - [size()](#size)
+  - [isEmpty()](#isempty)
+  - [clear()](#clear)
+- [clone, set, toArray 메소드 구현](#clone-set-toarray-메소드-구현)
+  - [clone()](#clone)
+  - [sort()](#sort)
+  - [toArray()](#toarray)
+- [iterator](#iterator)
+
 # ArrayList
 
 - Object[] 배열(객체 배열)을 두고 사용한다.
@@ -165,14 +197,12 @@ size(요소의 개수)가 `MAX_ARRAY_SIZE`(최대 용적)보다 클 경우는 �
 
 `if (newCapacity >= 0)`
 
-`newCapacity`가 0을 포함한 양수일 경우
-
+- `newCapacity`가 0을 포함한 양수일 경우
 - 새로 할당할 용적의 크기(`newCapacity`)가 `MAX_ARRAY_SIZE`보다 작을 경우에는 당연히 아무 무리 없이 `newCapacity`를 반환하면 되고, 그게 아니라면 그냥 MAX_ARRAY_SIZE를 반환시켜버린다.
 
 `else`
 
-`newCapacity`가 음수일 경우
-
+- `newCapacity`가 음수일 경우
 - 음수일 경우는 있을 수 없으므로 `fiveFourtheSize`라는 새로운 용적 변수를 선언한다.
   - A + (A >>> 2) = 5/4 * A이므로 `oldCapacity`약간 크게 만들어 `fiveFourtheSize` 변수를 초기화한다.
   - 이렇게 비스마스킹을 썼는데, `fiveFourtheSize`가 음수일경우나 `MAX_ARRAY_SIZE`를 넘었을 경우는 그냥 `MAX_ARRAY_SIZE`를 반환하고, 그게 아니라 정상적인 수가 나왔다면 `fiveFourtheSize`를 반환한다.
@@ -494,7 +524,7 @@ indexOf() 메소드는 배열의 처음부터 검색을 하지만, LastIndexOf()
     - deep copy를 하려면(완벽하게 복제하려면) clone한 리스트의 array 또한 새로 생성해서 해당 배열에 copy해줘야 한다.
   - 이렇게 cloneList를 반환하면, cloneList의 array또한 새로 생성된
 
-## set()
+## sort()
 
 ```java
      public void sort() {
@@ -549,3 +579,49 @@ toArray()는 크게 두 가지가 있다.
   - 파라미터로 들어오는 배열(a)가 현재 array의 요소 개수(size)보다 작으면 size에 맞게 a의 공간을 재할당하면서 array에 있던 모든 요소를 복사한다.
   - 상위 타입에 대해서도 담을 수 있도록 만들기 위해 copyOf() 메소드에서 Class라는 파라미터를 마지막에 넣어준다.(`a.getClass()`)
     - 이렇게 하면 Object[] 배열로 리턴된 것을 T[] 타입으로 캐스팅하여 반환한다.
+
+# iterator
+
+배열의 요소들에 반복을 통해 접근을 도와주는 inner class
+
+- now 변수
+  - Iter class에서 다루는 배열의 인덱스
+- hasNext() 메소드
+  - 반복을 통해 요소들에 접근하다가 다음 인덱스에 값이 있는지 확인하는 메소드
+  - 현재 인덱스가 배열의 개수보다 작으면 true
+- next() 메소드
+  - 현재 인덱스의 다음 요소값을 반환하는 메소드
+  - 현재 인덱스가 마지막 인덱스이면 다음 인덱스는 없으므로 `NoSuchElementException()` 예외를 발생시킨다.
+
+```java
+     @Override
+     public Iterator<E> iterator() {
+          return new Iter();
+     }
+
+     private class Iter implements Iterator<E> {
+
+          private int now = 0;
+
+          @Override
+          public boolean hasNext() {
+               return now < size;
+          }
+
+          @SuppressWarnings("unchecked")
+          @Override
+          public E next() {
+               int cs = now;
+               if (cs >= size) {
+                    throw new NoSuchElementException();
+               }
+               Object[] data = ArrayList.this.array;
+               now = cs + 1;
+               return (E) data[cs];
+          }
+          
+          public void remove() {
+               throw new UnsupportedOperationException();
+          }
+     }
+```
