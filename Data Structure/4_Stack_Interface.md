@@ -1,6 +1,7 @@
 # Stack
 
 Stack
+
 - 쌓다
 - LIFO(Last In First Out)
 - FILO(First In Last Out)
@@ -83,3 +84,7 @@ public interface MyStack<E> {
 }
 
 ```
+
+## 참고
+
+https://st-lab.tistory.com/173
