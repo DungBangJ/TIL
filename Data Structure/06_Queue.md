@@ -14,6 +14,7 @@
   - [toArray() 메소드](#toarray-메소드)
   - [clone() 메소드](#clone-메소드)
   - [sort() 메소드](#sort-메소드)
+    - [sort() 메소드 예시](#sort-메소드-예시)
 
 # Queue
 
@@ -379,6 +380,21 @@ q2 = arrayqueue.toArray(q2);
 
 - `Comparable`
   - 해당 객체의 기본 정렬 방법을 설정할 때 사용
+
+```java
+public void sort() {
+	/**
+	 *  Comparator를 넘겨주지 않는 경우 해당 객체의 Comparable에 구현된
+	 *  정렬 방식을 사용한다.
+	 *  만약 구현되어있지 않으면 cannot be cast to class java.lang.Comparable
+	 *  에러가 발생한다.
+	 *  만약 구현되어있을 경우 null로 파라미터를 넘기면
+	 *  Arrays.sort()가 객체의 compareTo 메소드에 정의된 방식대로 정렬한다.
+	 */
+	sort(null);
+}
+```
+
 - `Comparator`
   - 특정한 경우에 임시적으로 쓸 수 있게 정렬을 정의할 때 사용
   - 흔히 쓰는 int[] 배열, String[] 배열, Wrapper 클래스 타입 등 수많은 클래스들은 기본적으로 자체 정렬 방식을 지원하기 때문에 Comparator를 쓰지 않아도 정렬을 할 수 있다.
@@ -391,6 +407,7 @@ q2 = arrayqueue.toArray(q2);
 
         // null 접근 방지를 위해 toArray로 요소만 있는 배열을 얻어 이를 정렬한 뒤 덮어씌운다.
         Object[] res = toArray();
+        // Arrays.sort(T[] a, int fromIndex, int toIndex, Comparator<? super T> c)
         Arrays.sort((E[]) res, 0, size, c);
         clear();
         // 정렬된 res의 원소를 array에 1부터 채운다.
@@ -402,4 +419,158 @@ q2 = arrayqueue.toArray(q2);
 
 - `Comparator<? super E>`
   - 상속관계이면서 부모 클래스에서 정의된 정렬 방식을 따르는 경우도 있기에 `<? super E>`로 한 것이다.
-- 
+  - 부모 관계를 고려하지 않는다면 그냥 `Comparator<E>`로 써도 된다.
+- 이렇게 sort() 안에 Comparator를 파라미터로 넣어주고, 구현부에서 Arrays.sort()를  통해 정렬해주면 되는데, 이때 배열에 null이 있으면 NullPointerException이 발생하기 때문에 toArray() 메소드를 사용해서 요소들로 가득 차있는 임시 배열을 사용하여 정렬한 뒤에 복사해주는 방식을 사용한다.
+
+### sort() 메소드 예시
+
+
+Student 클래스가 Comparable을 구현하지 않았을 경우
+
+```java
+package _3_ArrayQueue;
+
+public class testSort {
+
+    public static void main(String[] args) {
+        MyArrayQueue<Student> myQ = new MyArrayQueue<>();
+
+        myQ.offer(new Student("윤대혁", 25));
+        myQ.offer(new Student("조병화", 25));
+        myQ.offer(new Student("송근일", 24));
+        myQ.offer(new Student("최이재", 28));
+
+        myQ.sort();
+
+        for (Object obj : myQ.toArray()) {
+            System.out.println(obj);
+        }
+    }
+}
+
+class Student {
+    String name;
+    int age;
+
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "name : " + name +
+            ", age =" + age;
+    }
+}
+```
+
+![](img/2022-11-09-10-10-06.png)
+
+위와 같이 Student 클래스에서 Comparable을 구현하지 않고 있다면 해당 객체의 정렬 방법을 모르기 때문에 에러가 터지게 된다.
+- Arrays.sort()에 정렬 방법을 알려주던가, Student 클래스에 정렬 방법을 구현해야 한다.
+
+Comparator의 구현을 통해 명시적으로 Arrays.sort()에 파라미터로 넘기는 방법
+
+```java
+package _3_ArrayQueue;
+
+import java.util.Comparator;
+
+public class testSort {
+
+    public static void main(String[] args) {
+        MyArrayQueue<Student> myQ = new MyArrayQueue<>();
+
+        myQ.offer(new Student("윤대혁", 25));
+        myQ.offer(new Student("조병화", 25));
+        myQ.offer(new Student("송근일", 24));
+        myQ.offer(new Student("최이재", 28));
+
+        //sort() 메소드의 파라미터로 사용자가 설정한 Comparator를 넘겨준다.
+        myQ.sort(customComparator);
+
+        for (Object obj : myQ.toArray()) {
+            System.out.println(obj);
+        }
+    }
+
+    // 사용자 설정 comparator(비교기)
+    static Comparator<Student> customComparator = new Comparator<Student>() {
+        @Override
+        public int compare(Student o1, Student o2) {
+            return o2.age - o1.age;
+        }
+    };
+}
+
+class Student {
+    String name;
+    int age;
+
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "name : " + name +
+            ", age =" + age;
+    }
+}
+```
+
+![](img/2022-11-09-10-15-37.png)
+
+Comparable의 구현을 통해 객체의 정렬 방법을 설정하는 방법
+
+- 객체 기본 정렬 방식을 설정하는 Comparable 구현 방법으로도 정렬할 수 있다.
+
+```java
+package _3_ArrayQueue;
+
+public class testSortUsingComparable {
+
+    public static void main(String[] args) {
+        MyArrayQueue<Student2> myQ = new MyArrayQueue<>();
+
+        myQ.offer(new Student2("윤대혁", 25));
+        myQ.offer(new Student2("조병화", 25));
+        myQ.offer(new Student2("송근일", 24));
+        myQ.offer(new Student2("최이재", 28));
+
+        myQ.sort();
+
+        for (Object obj : myQ.toArray()) {
+            System.out.println(obj);
+        }
+    }
+}
+
+class Student2 implements Comparable<Student2> {
+    String name;
+    int age;
+
+
+    public Student2(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "name : " + name +
+            ", age =" + age;
+    }
+
+    @Override
+    public int compareTo(Student2 o) {
+        return o.age - this.age;
+    }
+}
+```
+
+- sort() 내부에서 Comparator가 없으면 해당 클래스의 Comparable에서 compareTo()를 구현한 내용을 찾아 정렬을 진행한다.
