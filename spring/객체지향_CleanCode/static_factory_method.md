@@ -66,3 +66,9 @@ getInstance : 매개변수로 명시한 인스턴스를 반환하지만 같은 �
 
 newInstance : 매번 새로운 객체를 반환
 ```
+
+# 참고
+
+https://namget.tistory.com/entry/Effective-Java-%EC%9D%B4%ED%8E%99%ED%8B%B0%EB%B8%8C-%EC%9E%90%EB%B0%94-3e-1
+
+https://blog.javarouka.me/2018/11/12/static-creator/#%EC%8B%A4%EC%A0%9C-%EA%B5%AC%ED%98%84%EC%B2%B4-%ED%81%B4%EB%9E%98%EC%8A%A4%EA%B0%80-%EC%97%86%EC%96%B4%EB%8F%84-%EB%90%9C%EB%8B%A4
