@@ -119,20 +119,20 @@ public class OrderServiceImpl implements OrderService{
       - 구현 클래스 의존: FixDiscountPolicy, RateDiscountPolicy
   - OCP 위반
 
-![](../img/2022-09-19-15-36-51.png)
+![](img/2022-09-19-15-36-51.png)
 
 - `OrderServiceImpl`이 인터페이스인 `DiscounPolicy` 뿐만 아니라 구현 클래스인 `FixDiscountPolicy`나 `RateDiscountPolicy`에 의존하고 있다.
   - DIP 위반
     - 구현 클래스는 인터페이스에만 의존하도록 변경해줘야 한다.
 
-![](../img/2022-09-19-15-38-36.png)
+![](img/2022-09-19-15-38-36.png)
 
 - `FixDiscountPolicy`에서 `RateDiscountPolicy`로 변경하려면 `OrderServiceImpl`의 소스 코드도 변경해야 한다.
   - OCP 위반
 
-구현 클래스가 인터페이스에만 의존하게 만들기 위해서는 누군가각 클라이언트인 `OrderServiceImpl`에 `DiscountPolicy`의 구현 객체를 대신 생성하고 주입해줘야 한다.
+구현 클래스가 인터페이스에만 의존하게 만들기 위해서는 누군가가 클라이언트인 `OrderServiceImpl`에 `DiscountPolicy`의 구현 객체를 대신 생성하고 주입해줘야 한다.
 
-# AppConfig
+# AppConfig (공연 기획자)
 
 구현 객체를 생성하고, 연결하는 책임을 가지는 별도의 설정 클래스
 

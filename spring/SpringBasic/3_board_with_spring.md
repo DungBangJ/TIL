@@ -1,13 +1,13 @@
 - [스프링 적용하기](#스프링-적용하기)
-  - [AppConfig](#appconfig)
-  - [MemberApp, OrderApp](#memberapp-orderapp)
+	- [AppConfig](#appconfig)
+	- [MemberApp, OrderApp](#memberapp-orderapp)
 - [스프링 컨테이너](#스프링-컨테이너)
-  - [스프링 컨테이너 생성](#스프링-컨테이너-생성)
-  - [스프링 컨테이너에 등록된 모든 빈 조회](#스프링-컨테이너에-등록된-모든-빈-조회)
-    - [스프링 빈 조회 (기본)](#스프링-빈-조회-기본)
-    - [스프링 빈 조회 (동일한 타입이 둘 이상)](#스프링-빈-조회-동일한-타입이-둘-이상)
-    - [스프링 빈 조회 (상속 관계)](#스프링-빈-조회-상속-관계)
-    - [스프링 빈 설정 메타 정보 (BeanDefinition)](#스프링-빈-설정-메타-정보-beandefinition)
+	- [스프링 컨테이너 생성](#스프링-컨테이너-생성)
+	- [스프링 컨테이너에 등록된 모든 빈 조회](#스프링-컨테이너에-등록된-모든-빈-조회)
+		- [스프링 빈 조회 (기본)](#스프링-빈-조회-기본)
+		- [스프링 빈 조회 (동일한 타입이 둘 이상)](#스프링-빈-조회-동일한-타입이-둘-이상)
+		- [스프링 빈 조회 (상속 관계)](#스프링-빈-조회-상속-관계)
+		- [스프링 빈 설정 메타 정보 (BeanDefinition)](#스프링-빈-설정-메타-정보-beandefinition)
 - [BeanFactory와 ApplicationContext](#beanfactory와-applicationcontext)
 
 # 스프링 적용하기
@@ -446,9 +446,9 @@ public class ApplicationContextExtendsFindTest {
   - @Bean 당 각각 하나씩 메타 정보가 생성된다.
 - 스프링 컨테이너는 이 메타 정보를 기반으로 스프링 빈을 생성한다.
 
-![](../img/2022-09-22-23-45-38.png)
+![](img/2022-09-22-23-45-38.png)
 
-![](../img/2022-09-22-23-48-20.png)
+![](img/2022-09-22-23-48-20.png)
 
 - AnnotationCofigApplicationContext는 AnnotatedBeanDefinitionReader를 사용해서 AppConfig.class를 읽고 BeanDefinition을 생성한다.
 
@@ -482,7 +482,7 @@ public class BeanDefinitionTest {
 
 # BeanFactory와 ApplicationContext
 
-![](../img/2022-09-22-23-34-25.png)
+![](img/2022-09-22-23-34-25.png)
 
 BeanFactory
 
@@ -495,4 +495,4 @@ ApplicationContext
 - BeanFactory 기능을 모두 상속받아서 제공
 - 애플리케이션을 개발할 때는 빈을 관리하고 조회하는 기능은 물론이고, 많은 부가기능이 있다.
 
-![](../img/2022-09-22-23-37-56.png)
+![](img/2022-09-22-23-37-56.png)

@@ -15,6 +15,7 @@
   - [clone() 메소드](#clone-메소드)
   - [sort() 메소드](#sort-메소드)
     - [sort() 메소드 예시](#sort-메소드-예시)
+- [참고](#참고)
 
 # Queue
 
@@ -574,3 +575,7 @@ class Student2 implements Comparable<Student2> {
 ```
 
 - sort() 내부에서 Comparator가 없으면 해당 클래스의 Comparable에서 compareTo()를 구현한 내용을 찾아 정렬을 진행한다.
+
+# 참고
+
+https://st-lab.tistory.com/183
