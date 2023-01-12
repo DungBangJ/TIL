@@ -121,7 +121,7 @@ class AutoAppConfigTest {
 ## 컴포넌트 스캔 과정
 
 1. @ComponentScan은 @Component가 붙은 모든 클래스를 스프링 빈으로 등록한다.
-   - 빈을 등록할 때 이름은 첫 글자만 소문자로 바꿔서 등록한다.
+   - 빈을 등록할 때 이름은 클래스 이름의 첫 글자만 소문자로 바꿔서 등록한다.
    - 빈 이름을 지정할 수도 있다. (`@Component("memberService2")`)
 
 2. @Autowired 의존관계 자동 주입
@@ -148,7 +148,7 @@ class AutoAppConfigTest {
 
 권장하는 방법
 
-- 설정 정보 클래스의 위치를 프로젝트 최상단에 놓고, 아무런 위치 설정을 하지 않는 것이 스프링 부트의 기본 기능이므로 이를 따르자.
+- 설정 정보 클래스(AutoAppConfig)의 위치를 프로젝트 최상단에 놓고, 아무런 위치 설정을 하지 않는 것이 스프링 부트의 기본 기능이므로 이를 따르자.
   - @SpringBootApplication 안에 @ComponentScan이 들어있고, 이 실행 파일은 항상 루트 디렉토리에 위치해 있다.
 
 ### 컴포넌트 스캔 기본 대상

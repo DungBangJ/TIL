@@ -1,16 +1,16 @@
 - [웹 애플리케이션과 싱글톤](#웹-애플리케이션과-싱글톤)
 - [싱글톤 패턴](#싱글톤-패턴)
-  - [싱글톤 패턴을 적용한 테스트 코드](#싱글톤-패턴을-적용한-테스트-코드)
-  - [싱글톤 패턴의 문제점](#싱글톤-패턴의-문제점)
+	- [싱글톤 패턴을 적용한 테스트 코드](#싱글톤-패턴을-적용한-테스트-코드)
+	- [싱글톤 패턴의 문제점](#싱글톤-패턴의-문제점)
 - [싱글톤 컨테이너](#싱글톤-컨테이너)
-  - [싱글톤 방식의 주의점](#싱글톤-방식의-주의점)
-  - [@Configuration과 바이트코드 조작의 마법](#configuration과-바이트코드-조작의-마법)
+	- [싱글톤 방식의 주의점](#싱글톤-방식의-주의점)
+	- [@Configuration과 바이트코드 조작의 마법](#configuration과-바이트코드-조작의-마법)
 
 # 웹 애플리케이션과 싱글톤
 
 웹 애플리케이션은 보통 여러 고객이 동시에 요청을 한다.
 
-![](../img/2022-09-23-15-09-08.png)
+![](img/2022-09-23-15-09-08.png)
 
 ```java
 package yback.board.singleton;
@@ -102,7 +102,7 @@ public class SingletonService {
 ## 싱글톤 패턴의 문제점
 
 - 싱글톤 패턴을 구현하는 코드 자체가 많이 들어간다.
-- 클라이언트가 구체 클래스에 의존하기 때문에 DIP, OCP 원칙을 위반할 가능성이 높다.
+- 클라이언트가 구체 클래스에 의존하기 때문에(`.getInstance()`) DIP, OCP 원칙을 위반할 가능성이 높다.
 - 내부 속성을 변경하거나 초기화하기 어렵다.
 - 생성자가 private이므로 자식 클래스를 만들기 어렵다.
   - 유연성이 떨어진다.
@@ -138,7 +138,7 @@ public class SingletonService {
 
 싱글톤 컨테이너를 적용한 모습
 
-![](../img/2022-09-23-16-15-41.png)
+![](img/2022-09-23-16-15-41.png)
 
 >스프링의 기본 빈 등록 방식은 싱글톤이지만, 요청할 때 마다 새로운 객체를 생성해서 반환할 수도 있다.
 
@@ -225,6 +225,19 @@ class StatefulServiceTest {
     - 공유 필드에 변수를 선언하는 것은 위험하다.
     - 항상 stateless로 설계하는 것이 좋다.
 
+```java
+package hello.core.singleton;
+
+public class StatefulService {
+
+    public int order(String name, int price) {
+        System.out.println("name = " + name + ", price = " + price);
+        return price;
+    }
+}
+
+```
+
 ## @Configuration과 바이트코드 조작의 마법
 
 스프링 컨테이너
@@ -235,12 +248,27 @@ class StatefulServiceTest {
     - @Configuration
 - AnnotationCofigApplicationContext에 파라미터로 넘긴 값은 스프링 빈으로 등록된다.
   - AppConfig도 스프링으로 등록된다는 소리
-  - 스프링이 CGLIB이라는 바이트코드 조작 라이브러리를 사용해서 AppConfig클래스를 상속받은 임의의 클래스를 만들고, 그 다른 클래스를 스프링 빈으로 등록한 것이다.
+  - 스프링이 CGLIB이라는 바이트코드 조작 라이브러리를 사용해서 AppConfig클래스를 상속받은 임의의 클래스를 만들고, 이때 만드 임의의 클래스(AppConfig@CGLIB)를 스프링 빈으로 등록한 것이다.
 
-![](../img/2022-09-23-16-52-00.png)
+![](img/2022-09-23-16-52-00.png)
 
 AppConfig 클래스를 상속받은 임의의 클래스가 바로 싱글톤이 보장되도록 해준다.
 
 만약 @Configuration annotation이 없다면 AppConfig는 CGLIB 기술 없이 순수한 스프링 빈으로 등록될 것이다.
 
 - 이렇게 되면 싱글톤 방식을 보장하지 못한다.
+
+AppConfig@CGLIB 예상 코ㅗ드
+
+```java
+@Bean
+public MemberRepository memberRepository() {
+
+	if (memoryMemberRepository가 이미 스프링 컨테이너에 등록되어 있다면) {
+		return 스프링 컨테이너에서 찾아서 반환;
+	} else {
+		기존 로직을 호출해서 MemoryMemberRepository를 생성하고 스프링 컨테이너에 등록;
+		return 생성한 MemoryMemberRepository 반환;
+	}
+}
+```
